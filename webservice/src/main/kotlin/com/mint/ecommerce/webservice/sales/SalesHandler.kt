@@ -18,5 +18,4 @@ class SalesHandler {
         val sale = request.awaitBody<SaleCreationRequest>()
         return ServerResponse.ok().bodyValueAndAwait(sale)
     }
-
 }

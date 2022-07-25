@@ -19,15 +19,15 @@ allprojects {
         plugin("io.spring.dependency-management")
         plugin("org.jetbrains.kotlin.plugin.spring")
     }
-}
-
-subprojects {
 
     dependencyManagement {
         dependencies {
             dependency("org.jetbrains.kotlinx:kotlinx-coroutines-reactor:1.6.4")
         }
     }
+}
+
+subprojects {
 
     tasks.withType<Test> {
         useJUnitPlatform()
@@ -38,11 +38,5 @@ subprojects {
             freeCompilerArgs = listOf("-Xjsr305=strict")
             jvmTarget = "11"
         }
-    }
-}
-
-tasks.withType<Jar>() {
-    manifest {
-        attributes["Main-Class"] = "com.mint.ecommerce.webservice.Application"
     }
 }
