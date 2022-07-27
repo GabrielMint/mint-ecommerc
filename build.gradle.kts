@@ -21,8 +21,10 @@ allprojects {
     }
 
     dependencyManagement {
-        dependencies {
-            dependency("org.jetbrains.kotlinx:kotlinx-coroutines-reactor:1.6.4")
+        imports {
+            mavenBom("org.springframework.boot:spring-boot-dependencies:2.1.0.RELEASE") {
+                bomProperty("kotlin.version", "1.6.0")
+            }
         }
     }
 }
@@ -38,5 +40,11 @@ subprojects {
             freeCompilerArgs = listOf("-Xjsr305=strict")
             jvmTarget = "11"
         }
+    }
+}
+
+tasks.withType<Jar>() {
+    manifest {
+        attributes["Main-Class"] = "com.mint.ecommerce.webservice.Application"
     }
 }
