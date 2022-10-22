@@ -19,17 +19,21 @@ allprojects {
         plugin("io.spring.dependency-management")
         plugin("org.jetbrains.kotlin.plugin.spring")
     }
+}
 
+subprojects {
     dependencyManagement {
         imports {
             mavenBom("org.springframework.boot:spring-boot-dependencies:2.1.0.RELEASE") {
                 bomProperty("kotlin.version", "1.6.0")
             }
+            mavenBom("org.apache.logging.log4j:log4j-bom:2.17.2")
+        }
+        dependencies {
+            dependency("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
+            dependency("org.jetbrains.kotlinx:kotlinx-coroutines-reactor:1.6.4")
         }
     }
-}
-
-subprojects {
 
     tasks.withType<Test> {
         useJUnitPlatform()
