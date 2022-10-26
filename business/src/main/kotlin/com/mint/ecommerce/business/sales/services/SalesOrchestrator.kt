@@ -1,13 +1,13 @@
 package com.mint.ecommerce.business.sales.services
 
 import com.mint.ecommerce.business.sales.model.Sale
-import com.mint.ecommerce.business.sales.repositories.SaleRepository
-import org.springframework.stereotype.Service
+import com.mint.ecommerce.business.sales.repositories.SalesRepository
+import org.springframework.stereotype.Component
 
-@Service
+@Component
 class SalesOrchestrator(
-    private val saleRepository: SaleRepository
+    private val salesRepository: SalesRepository
 ) {
     suspend fun createSale(sale: Sale) =
-        saleRepository.createSale(sale)
+        salesRepository.createSale(sale)
 }

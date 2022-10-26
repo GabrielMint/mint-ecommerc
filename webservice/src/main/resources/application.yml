@@ -1,0 +1,15 @@
+info:
+  project:
+    name: mint-ecommerce
+
+server:
+  port: 8080
+
+spring:
+  application:
+    name: mint-ecommerce
+
+  r2dbc:
+    url: r2dbc:pool:postgresql://localhost:5432/menta-ecommerce
+    username: mint_ecommerce_app
+    password: mint-ecommerce-app-pw

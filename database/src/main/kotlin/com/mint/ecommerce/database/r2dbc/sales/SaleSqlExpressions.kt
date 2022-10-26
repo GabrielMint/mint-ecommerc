@@ -8,11 +8,13 @@ object SaleSqlExpressions {
         INSERT INTO $TABLE_NAME
         (
             id,
-            closedAt
+            total_amount,
+            closed_at
         )
         VALUES
         (
             :id,
+            :totalAmount,
             :closedAt
         )
     """

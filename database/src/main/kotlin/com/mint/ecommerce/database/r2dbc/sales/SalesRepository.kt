@@ -1,7 +1,7 @@
 package com.mint.ecommerce.database.r2dbc.sales
 
 import com.mint.ecommerce.business.sales.model.Sale
-import com.mint.ecommerce.business.sales.repositories.SaleRepository
+import com.mint.ecommerce.business.sales.repositories.SalesRepository
 import com.mint.ecommerce.database.r2dbc.extensions.get
 import io.r2dbc.spi.Row
 import mu.KLogging
@@ -15,7 +15,7 @@ import java.util.UUID
 @Repository
 class SalesRepository(
     private val db: DatabaseClient
-): SaleRepository {
+): SalesRepository {
 
     companion object : KLogging()
 
@@ -24,6 +24,7 @@ class SalesRepository(
 
         db.sql(SaleSqlExpressions.INSERT_SALE)
             .bind("id", sale.id)
+            .bind("totalAmount", sale.totalAmount)
             .bind("closedAt", sale.closedAt)
             .await()
     }
@@ -38,6 +39,7 @@ class SalesRepository(
         Sale(
             id = this.get<UUID>("id"),
             closedAt = this.get<Instant>("closedAt"),
+            totalAmount = this.get<Long>("totalAmount"),
             cart = emptyList()
         )
 }
