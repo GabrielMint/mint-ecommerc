@@ -22,10 +22,11 @@ object SaleSqlExpressions {
     const val RETRIEVE_SALE = """
         SELECT
             id,
-            closedAt
+            total_amount,
+            closed_at
         FROM
             $TABLE_NAME
-        WHERE id = id:
+        WHERE id = :id
     """
 
 

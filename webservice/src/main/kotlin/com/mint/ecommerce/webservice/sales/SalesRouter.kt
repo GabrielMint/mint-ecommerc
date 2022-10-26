@@ -16,7 +16,7 @@ class SalesRouter {
     fun salesApi(handler: SalesHandler) = coRouter {
         accept(MediaType.APPLICATION_JSON).nest {
             ROUTER.nest {
-                GET("", handler::get)
+                GET("/{saleId}", handler::get)
                 POST("", handler::post)
             }
         }

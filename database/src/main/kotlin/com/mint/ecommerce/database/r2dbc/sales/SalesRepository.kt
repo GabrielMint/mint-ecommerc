@@ -29,7 +29,7 @@ class SalesRepository(
             .await()
     }
 
-    override suspend fun getSale(id: UUID): Sale =
+    override suspend fun getSale(id: UUID): Sale? =
         db.sql(SaleSqlExpressions.RETRIEVE_SALE)
             .bind("id", id)
             .map{row, _ -> row.toSale()}
@@ -38,8 +38,8 @@ class SalesRepository(
     private fun Row.toSale() =
         Sale(
             id = this.get<UUID>("id"),
-            closedAt = this.get<Instant>("closedAt"),
-            totalAmount = this.get<Long>("totalAmount"),
+            closedAt = this.get<Instant>("closed_at"),
+            totalAmount = this.get<Long>("total_amount"),
             cart = emptyList()
         )
 }

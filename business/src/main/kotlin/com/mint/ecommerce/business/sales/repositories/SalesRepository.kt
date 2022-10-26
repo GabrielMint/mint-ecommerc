@@ -6,5 +6,5 @@ import java.util.UUID
 
 interface SalesRepository {
     suspend fun createSale(sale: Sale)
-    suspend fun getSale(id: UUID): Sale
+    suspend fun getSale(id: UUID): Sale?
 }
