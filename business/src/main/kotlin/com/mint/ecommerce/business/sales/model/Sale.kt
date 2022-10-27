@@ -15,5 +15,5 @@ data class CartItem(
     val saleId: UUID,
     val productId: UUID,
     val productQuantity: Int,
-    val subtotal: Long
+    val subamount: Long
 )

@@ -21,7 +21,7 @@ data class SaleCreationRequest(
                     saleId = saleId,
                     productId = it.productId,
                     productQuantity = it.productQuantity,
-                    subtotal = it.subtotal
+                    subamount = it.subamount
                 )
             }
         )
