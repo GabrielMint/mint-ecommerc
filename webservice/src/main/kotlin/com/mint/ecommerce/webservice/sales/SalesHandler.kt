@@ -21,9 +21,9 @@ class SalesHandler(
         return ServerResponse.ok().bodyValueAndAwait(sale)
     }
 
-
     suspend fun post(request: ServerRequest): ServerResponse {
-        val sale = request.awaitBodyOrNull<SaleCreationRequest>() ?: return ServerResponse.badRequest().buildAndAwait()
+        val sale = request.awaitBodyOrNull<SaleCreationRequest>()
+            ?: return ServerResponse.badRequest().buildAndAwait()
         val newSale = sale.toNewSale()
         salesOrchestrator.createSale(newSale)
         return ServerResponse.ok().bodyValueAndAwait(newSale)
